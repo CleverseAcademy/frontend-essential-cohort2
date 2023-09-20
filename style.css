@@ -26,7 +26,12 @@ nav {
 .milestone-container {
   display: flex;
   gap: 10px;
-  margin: 20px;
+
+  max-width: 1080px;
+
+  margin: 20px auto;
+
+  padding: 0 20px;
 }
 
 .milestone-card {
@@ -40,4 +45,16 @@ nav {
 
 a:hover {
   color: red;
+}
+
+@media (max-width: 764px) {
+  .milestone-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .milestone-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
