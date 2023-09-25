@@ -1,19 +1,27 @@
-const main = () => {
-  const frontendInput = document.getElementById('frontend')
+const main = async () => {
+  try {
+    const response = await fetch('https://api.minireg.thanayut.in.th/courses')
+    console.log(response)
 
-  const frontendButton = document.getElementById('add-front')
+    const rawData = await response.json()
 
-  const frontendMilestonesList = document.getElementById('frontend-milestone')
+    if (!response.ok) {
+      throw new Error(`code - ${response.status} - ${rawData.message}`)
+    }
 
-  frontendButton.addEventListener('click', (e) => {
-    e.preventDefault()
-
-    const newList = document.createElement('li')
-
-    newList.textContent = frontendInput.value
-
-    frontendMilestonesList.appendChild(newList)
-  })
+    console.log(rawData)
+  } catch (err) {
+    console.log(err)
+  }
+  // const frontendInput = document.getElementById('frontend')
+  // const frontendButton = document.getElementById('add-front')
+  // const frontendMilestonesList = document.getElementById('frontend-milestone')
+  // frontendButton.addEventListener('click', (e) => {
+  //   e.preventDefault()
+  //   const newList = document.createElement('li')
+  //   newList.textContent = frontendInput.value
+  //   frontendMilestonesList.appendChild(newList)
+  // })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
