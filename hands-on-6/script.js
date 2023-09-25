@@ -3,9 +3,13 @@ const host = 'api.minireg.thanayut.in.th'
 const fetchData = async () => {
   try {
     const response = await fetch(`https://${host}/courses`)
-    const jsonData = await response.json()
+    const data = await response.json()
 
-    return jsonData.courses
+    if (!response.ok) {
+      throw new Error('error')
+    }
+
+    return data.courses
   } catch (err) {
     console.log(err)
   }
